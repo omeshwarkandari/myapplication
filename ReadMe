@@ -1,0 +1,99 @@
+Myapp is a Springboot Java-Maven based application.
+
+Step 1:-
+Generate a Springboot project using https://start.spring.io/
+
+Project: Maven
+Language: Java
+Springboot: 2.7.3
+
+Project Metadata
+Group : com
+Artifact: myapp
+Name: myapp
+Description: Demo project for Spring Boot
+Package name: com.myapp
+Packaging: Jar
+Java: 11
+
+Dependencies: Spring Web and Spring Web
+
+Step 2:-
+Unzip the myapp.zip file and test the Spring application Hello World! @http://localhost:8080/
+Linux: ./mvnw spring-boot:run
+Windows: mvnw spring-boot:run
+
+Step3:-
+Add the package and dependency management tools like "org.springframework.boot.SpringApplication" and moidfying the main class as per project artifact.
+
+Demo Project of the Spring Boot under src/main/java/com/myapp/DemoApplication.java and I have modifies it as per my Project Metada/Artifact as belwo.
+
+ package com.example.demo;
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.RequestParam;
+ import org.springframework.web.bind.annotation.RestController;
+              
+              @SpringBootApplication
+              @RestController
+              public class DemoApplication {
+                
+                  
+                  public static void main(String[] args) {
+                  SpringApplication.run(DemoApplication.class, args);
+                  }
+                  
+                  @GetMapping("/hello")
+                  public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+                  return String.format("Hello %s!", name);
+                  }
+                
+              }
+              
+ 
+My Java file src/main/java/com/myapp/MyappApplication.java
+
+package com.myapp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@SpringBootApplication
+@RestController
+public class MyappApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MyappApplication.class, args);
+	}
+	@GetMapping("/hello")
+	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+		return String.format("Hello %s!", name);
+	}
+}
+  
+  
+Step 4:-
+Test Build using  mvn clean , mav clean install and mvn clean package 
+
+Step 5:
+Copy the src directory and pom.xml to a github repo
+
+
+step 6:
+Add a Dockerfile in the root and test the build in the harness.io
+
+step 7: Creat a docker image and push to docker registry.
+
+Step 8: Deploy image into Kubernets/Minikube 
+
+
+
+
+
+
+
