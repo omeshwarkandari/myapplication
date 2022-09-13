@@ -35,33 +35,29 @@ Demo Project of the Spring Boot under src/main/java/com/myapp/DemoApplication.ja
  import org.springframework.web.bind.annotation.RequestParam;
  import org.springframework.web.bind.annotation.RestController;
               
-              @SpringBootApplication
-              @RestController
-              public class DemoApplication {
-                
+ @SpringBootApplication
+ @RestController
+ public class DemoApplication {
+                                  
+        public static void main(String[] args) {
+            SpringApplication.run(DemoApplication.class, args);
+        }
                   
-                  public static void main(String[] args) {
-                  SpringApplication.run(DemoApplication.class, args);
-                  }
-                  
-                  @GetMapping("/hello")
-                  public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-                  return String.format("Hello %s!", name);
-                  }
-                
-              }
+        @GetMapping("/hello")
+        public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+             return String.format("Hello %s!", name);
+        }                
+ }
               
  
-My Java file src/main/java/com/myapp/MyappApplication.java
+Modified the Main Class and java file /src/main/java/com/myapp/MyappApplication.java
 
 package com.myapp;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @SpringBootApplication
 @RestController
@@ -76,24 +72,13 @@ public class MyappApplication {
 	}
 }
   
-  
-Step 4:-
-Test Build using  mvn clean , mav clean install and mvn clean package 
+Step 4: Test Build using  mvn clean , mav clean install and mvn clean package 
 
-Step 5:
-Copy the src directory and pom.xml to a github repo
+Step 5: Push "src" directory and "pom.xml" to a git repo 
+(pom.xml does not require any modification if step 4 is susccessful even for docker image using selected jar package in the project)
 
-
-step 6:
-Add a Dockerfile in the root and test the build in the harness.io
+step 6: Add a Dockerfile in the root and test the build in the harness.io 
 
 step 7: Creat a docker image and push to docker registry.
 
 Step 8: Deploy image into Kubernets/Minikube 
-
-
-
-
-
-
-
